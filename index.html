@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savory Bite — Luxury Dining & Culinary Experience</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================
+           1. DESIGN SYSTEM & CSS VARIABLES
+           ========================================== */
+        :root {
+            --bg-primary: #0b0c10;
+            --bg-secondary: #12141c;
+            --bg-card: #181b26;
+            --bg-elevated: #202433;
+            
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa8625;
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #edd892 50%, #aa8625 100%);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            
+            --accent-red: #e11d48;
+            --accent-green: #10b981;
+            
+            --border-color: rgba(212, 175, 55, 0.15);
+            --border-highlight: rgba(212, 175, 55, 0.4);
+            
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+            --shadow-gold: 0 10px 30px -10px rgba(212, 175, 55, 0.3);
+            
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==========================================
+           2. BASE & RESET STYLES
+           ========================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: var(--font-heading);
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: none;
+            font-family: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Container utility */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gold-gradient);
+            color: #000;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(212, 175, 55, 0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-light);
+            border-color: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* Section Header Component */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--gold-primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0 auto;
+        }
+
+        .section-divider::before, .section-divider::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background: var(--border-highlight);
+        }
+
+        .section-divider i {
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+        }
+
+        /* ==========================================
+           3. NAVBAR & HEADER
+           ========================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition-smooth);
+        }
+
+        .navbar.scrolled {
+            background: rgba(11, 12, 16, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .brand-logo i {
+            color: var(--gold-primary);
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            transition: var(--transition-fast);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .cart-trigger {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            transition: var(--transition-fast);
+        }
+
+        .cart-trigger:hover {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--gold-gradient);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+
+        /* ==========================================
+           4. HERO SECTION
+           ========================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 4rem;
+            background: linear-gradient(to right, rgba(11, 12, 16, 0.95), rgba(11, 12, 16, 0.65)), 
+                        url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .feature-item i {
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+        }
+
+        .feature-text h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .feature-text p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================
+           5. MENU SECTION WITH FILTER & SEARCH
+           ========================================== */
+        .menu-section {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .menu-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.9rem 1.25rem 0.9rem 3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold-primary);
+            outline: none;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gold-gradient);
+            color: #000;
+            border-color: transparent;
+            font-weight: 600;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .menu-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .menu-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .menu-card:hover .menu-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(6px);
+            color: var(--gold-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .menu-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .menu-price {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--gold-primary);
+            font-weight: 700;
+        }
+
+        .menu-desc {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+        }
+
+        .add-cart-btn {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition-fast);
+        }
+
+        .add-cart-btn:hover {
+            background: var(--gold-gradient);
+            color: #000;
+            border-color: transparent;
+        }
+
+        /* ==========================================
+           6. DISH CUSTOMIZER / BUILDER SECTION
+           ========================================== */
+        .builder-section {
+            padding: 6rem 0;
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .builder-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .builder-preview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px dashed var(--border-color);
+            text-align: center;
+        }
+
+        .plate-visualizer {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            border: 4px solid var(--border-color);
+            background: radial-gradient(circle, #202433 0%, #12141c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: var(--shadow-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .plate-icon {
+            font-size: 5rem;
+            color: var(--gold-primary);
+            opacity: 0.8;
+            transition: var(--transition-smooth);
+        }
+
+        .builder-summary {
+            width: 100%;
+        }
+
+        .builder-summary h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .builder-price-tag {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+        }
+
+        .builder-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .option-group h4 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .option-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-fast);
+            font-size: 0.9rem;
+        }
+
+        .option-card:hover, .option-card.selected {
+            border-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .option-card.selected {
+            box-shadow: inset 0 0 0 1px var(--gold-primary);
+        }
+
+        /* ==========================================
+           7. RESERVATION SECTION
+           ========================================== */
+        .reservation-section {
+            padding: 6rem 0;
+            background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+        }
+
+        .reservation-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        /* ==========================================
+           8. CART SLIDING DRAWER
+           ========================================== */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 420px;
+            height: 100%;
+            background: var(--bg-card);
+            z-index: 1200;
+            transform: translateX(100%);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            border-left: 1px solid var(--border-color);
+        }
+
+        .cart-overlay.active .cart-drawer {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cart-header h3 {
+            font-size: 1.3rem;
+        }
+
+        .close-cart-btn {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            transition: var(--transition-fast);
+        }
+
+        .close-cart-btn:hover {
+            color: var(--gold-primary);
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            background: var(--bg-secondary);
+            padding: 0.85rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .cart-item-img {
+            width: 65px;
+            height: 65px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-price {
+            color: var(--gold-primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .qty-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .qty-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .cart-total-price {
+            color: var(--gold-primary);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+        }
+
+        /* ==========================================
+           9. TOAST NOTIFICATIONS
+           ========================================== */
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .toast {
+            background: var(--bg-elevated);
+            border: 1px solid var(--gold-primary);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        .toast i {
+            color: var(--gold-primary);
+
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ==========================================
+           10. FOOTER
+           ========================================== */
+        .footer {
+            background: #07080a;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            color: var(--gold-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================
+           11. RESPONSIVE BREAKPOINTS
+           ========================================== */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3rem; }
+            .builder-container { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--bg-card);
+                flex-direction: column;
+                justify-content: center;
+                transition: var(--transition-smooth);
+                border-left: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero-title { font-size: 2.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <i class="fa-solid fa-utensils"></i>
+                <span>SAVORY BITE</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#builder" class="nav-link">Dish Customizer</a></li>
+                <li><a href="#reservation" class="nav-link">Reservations</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="cart-trigger" id="cartTrigger" aria-label="Open Shopping Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Mobile Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tag"><i class="fa-solid fa-star"></i> Michelin Star Excellence</span>
+                <h1 class="hero-title">Culinary Artistry <br><span class="text-gold-gradient">Redefined.</span></h1>
+                <p class="hero-description">Experience an unmatched gastronomy journey where haute cuisine meets artisanal craft. Indulge in extraordinary flavors prepared by world-renowned chefs.</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-utensils"></i> Explore Menu</a>
+                    <a href="#reservation" class="btn btn-outline"><i class="fa-regular fa-calendar-check"></i> Book Table</a>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-leaf"></i>
+                        <div class="feature-text">
+                            <h4>Organic Harvest</h4>
+                            <p>100% Locally Sourced</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-award"></i>
+                        <div class="feature-text">
+                            <h4>Master Chefs</h4>
+                            <p>Award-Winning Team</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Exquisite Offerings</span>
+                <h2 class="section-title">Our Signature Menu</h2>
+                <div class="section-divider"><i class="fa-solid fa-diamond"></i></div>
+            </div>
+
+            <div class="menu-controls">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="menuSearch" placeholder="Search culinary creations...">
+                </div>
+                <div class="filter-tabs" id="filterTabs">
+                    <button class="filter-btn active" data-category="all">All Dishes</button>
+                    <button class="filter-btn" data-category="starters">Starters</button>
+                    <button class="filter-btn" data-category="mains">Main Courses</button>
+                    <button class="filter-btn" data-category="desserts">Desserts</button>
+                    <button class="filter-btn" data-category="drinks">Craft Beverages</button>
+                </div>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+                <!-- Dynamic Menu Cards Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- DISH CUSTOMIZER / BUILDER SECTION -->
+    <section class="builder-section" id="builder">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Tailored Gastronomy</span>
+                <h2 class="section-title">Interactive Gourmet Builder</h2>
+                <div class="section-divider"><i class="fa-solid fa-diamond"></i></div>
+            </div>
+
+            <div class="builder-container">
+                <div class="builder-preview">
+                    <div class="plate-visualizer">
+                        <i class="fa-solid fa-utensils plate-icon" id="plateIcon"></i>
+                    </div>
+                    <div class="builder-summary">
+                        <h3 id="customDishTitle">Custom Artisanal Plate</h3>
+                        <p class="builder-price-tag" id="customDishPrice">$0.00</p>
+                        <p id="customDishSummary" style="color: var(--text-secondary); font-size: 0.85rem;">Select your base, protein, and finishes.</p>
+                    </div>
+                </div>
+
+                <div class="builder-options">
+                    <div class="option-group">
+                        <h4>1. Select Base Component</h4>
+                        <div class="option-grid" id="baseOptions">
+                            <div class="option-card" data-type="base" data-name="Saffron Risotto" data-price="18" data-icon="fa-bowl-rice">
+                                <span>Saffron Risotto</span>
+                                <strong>+$18</strong>
+                            </div>
+                            <div class="option-card" data-type="base" data-name="Truffle Mash" data-price="16" data-icon="fa-stroopwafel">
+                                <span>Truffle Mash</span>
+                                <strong>+$16</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <h4>2. Select Prime Protein</h4>
+                        <div class="option-grid" id="proteinOptions">
+                            <div class="option-card" data-type="protein" data-name="Wagyu Ribeye (A5)" data-price="45" data-icon="fa-drumstick-bite">
+                                <span>Wagyu Ribeye</span>
+                                <strong>+$45</strong>
+                            </div>
+                            <div class="option-card" data-type="protein" data-name="Seared Sea Bass" data-price="32" data-icon="fa-fish">
+                                <span>Seared Sea Bass</span>
+                                <strong>+$32</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <h4>3. Signature Sauce & Finish</h4>
+                        <div class="option-grid" id="sauceOptions">
+                            <div class="option-card" data-type="sauce" data-name="Red Wine Jus" data-price="6" data-icon="fa-wine-glass">
+                                <span>Red Wine Jus</span>
+                                <strong>+$6</strong>
+                            </div>
+                            <div class="option-card" data-type="sauce" data-name="Herb Emulsion" data-price="5" data-icon="fa-seedling">
+                                <span>Herb Emulsion</span>
+                                <strong>+$5</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="addCustomToCart" style="width: 100%; margin-top: 1rem;">
+                        <i class="fa-solid fa-cart-plus"></i> Add Custom Creation To Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION SECTION -->
+    <section class="reservation-section" id="reservation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Book Your Experience</span>
+                <h2 class="section-title">Table Reservation</h2>
+                <div class="section-divider"><i class="fa-solid fa-diamond"></i></div>
+            </div>
+
+            <div class="reservation-wrapper">
+                <form id="reservationForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="resName">Full Name</label>
+                            <input type="text" id="resName" class="form-control" required placeholder="Lord/Lady Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="resEmail">Email Address</label>
+                            <input type="email" id="resEmail" class="form-control" required placeholder="guest@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="resDate">Reservation Date</label>
+                            <input type="date" id="resDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="resTime">Preferred Time</label>
+                            <select id="resTime" class="form-control" required>
+                                <option value="">Select Time Slot</option>
+                                <option value="18:00">06:00 PM</option>
+                                <option value="19:30">07:30 PM</option>
+                                <option value="21:00">09:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="resGuests">Number of Guests</label>
+                            <select id="resGuests" class="form-control" required>
+                                <option value="2">2 Guests (Intimate Dining)</option>
+                                <option value="4">4 Guests (Standard)</option>
+                                <option value="6">6+ Guests (Private Suite)</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="resNotes">Special Dietary Notes / Requests</label>
+                            <textarea id="resNotes" class="form-control" rows="3" placeholder="Allergies, anniversaries, special seating preferences..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fa-regular fa-paper-plane"></i> Confirm Instant Reservation
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="brand-logo">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>SAVORY BITE</span>
+                    </a>
+                    <p>Elevating gastronomy to an unforgettable sensory journey. Modern elegance meets culinary craftsmanship.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#builder">Customizer</a></li>
+                        <li><a href="#reservation">Reservations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Operating Hours</h4>
+                    <ul class="footer-links">
+                        <li>Mon - Thu: 5:00 PM - 11:00 PM</li>
+                        <li>Fri - Sun: 4:30 PM - 12:00 AM</li>
+                        <li>Private Events: Available Daily</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Location</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">742 Evergreen Terrace, Culinary District</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">concierge@savorybite.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Savory Bite Luxury Dining. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER & OVERLAY -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-drawer">
+            <div class="cart-header">
+                <h3><i class="fa-solid fa-bag-shopping" style="color: var(--gold-primary);"></i> Your Order</h3>
+                <button class="close-cart-btn" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="cart-items" id="cartItemsContainer">
+                <!-- Cart Items Rendered via JS -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total-row">
+                    <span>Total Amount</span>
+                    <span class="cart-total-price" id="cartTotal">$0.00</span>
+                </div>
+                <button class="btn btn-primary" id="checkoutBtn" style="width: 100%;">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        /* ==========================================
+           1. MENU DATA STORE
+           ========================================== */
+        const MENU_DATA = [
+            {
+                id: 'm1',
+                title: 'Pan-Seared Foie Gras',
+                category: 'starters',
+                price: 28,
+                rating: 4.9,
+                description: 'Brioche toast, fig compote, aged balsamic reduction, and crushed pistachios.',
+                image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
+                badge: 'Chef Signature'
+            },
+            {
+                id: 'm2',
+                title: 'Truffle Lobster Bisque',
+                category: 'starters',
+                price: 24,
+                rating: 4.8,
+                description: 'Maine lobster medallions, black truffle oil emulsion, micro chives.',
+                image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80',
+                badge: 'Popular'
+            },
+            {
+                id: 'm3',
+                title: 'Dry-Aged Tomahawk Steak',
+                category: 'mains',
+                price: 95,
+                rating: 5.0,
+                description: me => '45-day dry-aged Prime Ribeye, smoked marrow butter, rosemary infused jus.',
+                image: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80',
+                badge: 'Prime Cut'
+            },
+            {
+                id: 'm4',
+                title: 'Wild Chilean Sea Bass',
+                category: 'mains',
+                price: 48,
+                rating: 4.9,
+                description: 'Saffron emulsion, roasted baby carrots, lemon-herb beurre blanc.',
+                image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80',
+                badge: 'Fresh Catch'
+            },
+            {
+                id: 'm5',
+                title: 'Valrhona Chocolate Soufflé',
+                category: 'desserts',
+                price: 18,
+                rating: 4.9,
+                description: '70% dark chocolate souffle, Madagascar vanilla bean gelato, gold leaf.',
+                image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80',
+                badge: 'Decadent'
+            },
+            {
+                id: 'm6',
+                title: 'Smoked Old Fashioned',
+                category: 'drinks',
+                price: 22,
+                rating: 4.7,
+                description: 'Single barrel bourbon, aromatic bitters, charred orange peel, hickory smoke.',
+                image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80',
+                badge: 'Artisanal'
+            }
+        ];
+
+        /* ==========================================
+           2. APPLICATION STATE
+           ========================================== */
+        let cartState = [];
+        let customDishState = {
+            base: null,
+            protein: null,
+            sauce: null
+        };
+
+        /* ==========================================
+           3. UI INITIALIZATION & EVENT LISTENERS
+           ========================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu(MENU_DATA);
+            initNavigation();
+            initMenuFilters();
+            initDishBuilder();
+            initCartDrawer();
+            initReservationForm();
+        });
+
+        /* ==========================================
+           4. NAVIGATION LOGIC
+           ========================================== */
+        function initNavigation() {
+            const navbar = document.getElementById('navbar');
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        /* ==========================================
+           5. RENDER & FILTER MENU
+           ========================================== */
+        function renderMenu(items) {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No culinary creations match your search.</p>`;
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.innerHTML = `
+                    <div class="menu-img-wrapper">
+                        <img src="${item.image}" alt="${item.title}" loading="lazy">
+                        <span class="menu-badge">${item.badge}</span>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-title-row">
+                            <h3 class="menu-title">${item.title}</h3>
+                            <span class="menu-price">$${item.price}</span>
+                        </div>
+                        <p class="menu-desc">${typeof item.description === 'function' ? item.description() : item.description}</p>
+                        <div class="menu-card-footer">
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>${item.rating}</span>
+                            </div>
+                            <button class="add-cart-btn" onclick="addToCart('${item.id}')">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function initMenuFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('menuSearch');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const category = btn.dataset.category;
+                    const searchTerm = searchInput.value.toLowerCase();
+                    filterAndRender(category, searchTerm);
+                });
+            });
+
+            searchInput.addEventListener('input', (e) => {
+                const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+                filterAndRender(activeCategory, e.target.value.toLowerCase());
+            });
+        }
+
+        function filterAndRender(category, query) {
+            let filtered = MENU_DATA;
+
+            if (category !== 'all') {
+                filtered = filtered.filter(item => item.category === category);
+            }
+
+            if (query) {
+                filtered = filtered.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    (typeof item.description === 'string' && item.description.toLowerCase().includes(query))
+                );
+            }
+
+            renderMenu(filtered);
+        }
+
+        /* ==========================================
+           6. GOURMET DISH CUSTOMIZER
+           ========================================== */
+        function initDishBuilder() {
+            const optionCards = document.querySelectorAll('.option-card');
+            const addToCartBtn = document.getElementById('addCustomToCart');
+
+            optionCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const type = card.dataset.type;
+                    
+                    // Deselect sibling options in the same group
+                    const group = card.parentElement;
+                    group.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+                    
+                    // Select clicked card
+                    card.classList.add('selected');
+
+                    // Update State
+                    customDishState[type] = {
+                        name: card.dataset.name,
+                        price: parseFloat(card.dataset.price),
+                        icon: card.dataset.icon
+                    };
+
+                    updateBuilderUI();
+                });
+            });
+
+            addToCartBtn.addEventListener('click', () => {
+                if (!customDishState.base || !customDishState.protein || !customDishState.sauce) {
+                    showToast('Please select base, protein, and sauce to complete your dish.', 'warning');
+                    return;
+                }
+
+                const customItem = {
+                    id: 'custom-' + Date.now(),
+                    title: `Custom: ${customDishState.protein.name}`,
+                    price: customDishState.base.price + customDishState.protein.price + customDishState.sauce.price,
+                    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
+                    quantity: 1
+                };
+
+                addToCartDirect(customItem);
+                showToast('Custom culinary creation added to cart!', 'success');
+            });
+        }
+
+        function updateBuilderUI() {
+            const totalPrice = (customDishState.base?.price || 0) + 
+                               (customDishState.protein?.price || 0) + 
+                               (customDishState.sauce?.price || 0);
+
+            document.getElementById('customDishPrice').textContent = `$${totalPrice.toFixed(2)}`;
+
+            let summaryText = [];
+            if (customDishState.base) summaryText.push(customDishState.base.name);
+            if (customDishState.protein) summaryText.push(customDishState.protein.name);
+            if (customDishState.sauce) summaryText.push(customDishState.sauce.name);
+
+            document.getElementById('customDishSummary').textContent = summaryText.length > 0 ? summaryText.join(' + ') : 'Select options above.';
+            
+            if (customDishState.protein) {
+                const iconElem = document.getElementById('plateIcon');
+                iconElem.className = `fa-solid ${customDishState.protein.icon} plate-icon`;
+            }
+        }
+
+        /* ==========================================
+           7. CART & DRAWER SYSTEM
+           ========================================== */
+        function initCartDrawer() {
+            const cartTrigger = document.getElementById('cartTrigger');
+            const closeCart = document.getElementById('closeCart');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            cartTrigger.addEventListener('click', () => cartOverlay.classList.add('active'));
+            closeCart.addEventListener('click', () => cartOverlay.classList.remove('active'));
+            
+            cartOverlay.addEventListener('click', (e) => {
+                if (e.target === cartOverlay) cartOverlay.classList.remove('active');
+            });
+
+            checkoutBtn.addEventListener('click', () => {
+                if (cartState.length === 0) {
+                    showToast('Your cart is empty!', 'warning');
+                    return;
+                }
+                showToast('Order placed successfully! Concierge team notified.', 'success');
+                cartState = [];
+                updateCartUI();
+                cartOverlay.classList.remove('active');
+            });
+        }
+
+        function addToCart(itemId) {
+            const item = MENU_DATA.find(m => m.id === itemId);
+            if (!item) return;
+
+            const existing = cartState.find(c => c.id === itemId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cartState.push({ ...item, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`${item.title} added to your order`, 'success');
+        }
+
+        function addToCartDirect(itemObj) {
+            cartState.push(itemObj);
+            updateCartUI();
+        }
+
+        function updateCartQuantity(id, change) {
+            const item = cartState.find(c => c.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cartState = cartState.filter(c => c.id !== id);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartBadge = document.getElementById('cartBadge');
+            const cartContainer = document.getElementById('cartItemsContainer');
+            const cartTotal = document.getElementById('cartTotal');
+
+            const totalItems = cartState.reduce((sum, i) => sum + i.quantity, 0);
+            const totalPrice = cartState.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+
+            cartBadge.textContent = totalItems;
+            cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+
+            if (cartState.length === 0) {
+                cartContainer.innerHTML = `<p style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">Your cart is empty.</p>`;
+                return;
+            }
+
+            cartContainer.innerHTML = '';
+            cartState.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'cart-item';
+                el.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-price">$${item.price}</div>
+                        <div class="cart-item-qty">
+                            <button class="qty-btn" onclick="updateCartQuantity('${item.id}', -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateCartQuantity('${item.id}', 1)">+</button>
+                        </div>
+                    </div>
+                `;
+                cartContainer.appendChild(el);
+            });
+        }
+
+        /* ==========================================
+           8. RESERVATION SYSTEM
+           ========================================== */
+        function initReservationForm() {
+            const form = document.getElementById('reservationForm');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('resName').value;
+                const date = document.getElementById('resDate').value;
+                const time = document.getElementById('resTime').value;
+
+                showToast(`Reservation confirmed for ${name} on ${date} at ${time}.`, 'success');
+                form.reset();
+            });
+        }
+
+        /* ==========================================
+           9. TOAST NOTIFICATION SYSTEM
+           ========================================== */
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+
+            const icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+
+            toast.innerHTML = `
+                <i class="fa-solid ${icon}"></i>
+                <span>${message}</span>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                toast.style.transition = 'all 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
